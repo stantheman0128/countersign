@@ -312,7 +312,7 @@ const sceneFns = {
         render();
       }
     };
-    if (beat < 2) local.timer = setTimeout(advance, 4600);
+    if (beat < 2 && params.get("auto") !== "0") local.timer = setTimeout(advance, 4600); // ?auto=0 lets a recording set the pace
 
     const chip = (key, tagKey, i) => el("li", { class: "chip", style: `--i:${i}` }, el("span", { text: t(key) }), tagKey ? el("em", { text: t(tagKey) }) : null);
     const figure = el(
