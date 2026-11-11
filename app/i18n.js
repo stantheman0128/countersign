@@ -258,7 +258,7 @@ export const STRINGS = {
     act1_agent_sent: "已簽署。我把請求連同你的委託傳給 Stan 了。",
     act1_switch: "切到 Stan 的手機",
     act1_caption_verify: "Stan 的手機自己驗章，不是哪一台伺服器說了算。",
-    act1_incoming: "{agent}向你請款",
+    act1_incoming: "{agent} 向你請款",
     act1_caption_pass: "全部通過，Stan 知道兩件事：真的是小明，而且這正是小明同意的內容。",
     act1_pay: "付款 {amount}（示範）",
     act1_caption_paid: "Stan 也簽了。同一個請求，雙方都留下紀錄。",

@@ -73,8 +73,10 @@ const money = (n) => "NT$" + Number(n).toLocaleString("en-US");
 const last4 = (account) => String(account ?? "????").slice(-4);
 const accountText = (payee) => t("account", { bank: payee.bank, last4: last4(payee.account) });
 const purposeText = (text) => (lang === "zh" && PURPOSE_ZH[text]) || text;
-const personName = (pid) => t("name_" + pid);
-const shownName = (payloadName) => (payloadName === "Ming" ? t("name_ming") : payloadName === "Stan" ? t("name_stan") : payloadName);
+// In Chinese text a Latin name needs a space before the characters that follow it.
+const zhSpace = (name) => (lang === "zh" && /[A-Za-z0-9]$/.test(name) ? name + " " : name);
+const personName = (pid) => zhSpace(t("name_" + pid));
+const shownName = (payloadName) => zhSpace(payloadName === "Ming" ? t("name_ming") : payloadName === "Stan" ? t("name_stan") : payloadName);
 const dateText = (ms) =>
   new Intl.DateTimeFormat(lang === "zh" ? "zh-TW" : "en-US", { month: "short", day: "numeric", hour: "2-digit", minute: "2-digit" }).format(ms);
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
@@ -758,6 +760,7 @@ function render() {
   setStatus("");
   stage.replaceChildren();
   sceneFns[id](stage);
+  window.scrollTo(0, 0); // each step starts at its caption, which matters on a recording
 
   const foot = document.getElementById("foot");
   const canSwitch = S.canPasskey || !simulated();
