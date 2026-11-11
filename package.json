@@ -10,6 +10,7 @@
   },
   "scripts": {
     "start": "node scripts/serve.mjs",
-    "test": "node --test test/*.test.mjs"
+    "test": "node --test test/*.test.mjs",
+    "e2e": "node e2e/demo.e2e.mjs"
   }
 }

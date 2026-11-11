@@ -760,12 +760,13 @@ function render() {
   sceneFns[id](stage);
 
   const foot = document.getElementById("foot");
+  const canSwitch = S.canPasskey || !simulated();
   foot.replaceChildren(
-    el("span", { class: "mode mode--" + S.mode, "data-mode": S.mode, text: t(simulated() ? "mode_sim" : "mode_passkey") }),
-    S.canPasskey || simulated() === false
-      ? el("button", { type: "button", class: "link", text: t(simulated() ? "mode_use_passkey" : "mode_use_sim"), onclick: () => switchMode(simulated() ? "passkey" : "sim") })
-      : null,
-    el("button", { type: "button", class: "link", text: t("reset"), onclick: () => confirm(t("reset_confirm")) && switchMode(S.mode) }),
+    ...[
+      el("span", { class: "mode mode--" + S.mode, "data-mode": S.mode, text: t(simulated() ? "mode_sim" : "mode_passkey") }),
+      canSwitch ? el("button", { type: "button", class: "link", "data-action": "switch-mode", text: t(simulated() ? "mode_use_passkey" : "mode_use_sim"), onclick: () => switchMode(simulated() ? "passkey" : "sim") }) : null,
+      el("button", { type: "button", class: "link", text: t("reset"), onclick: () => confirm(t("reset_confirm")) && switchMode(S.mode) }),
+    ].filter(Boolean),
   );
 }
 
