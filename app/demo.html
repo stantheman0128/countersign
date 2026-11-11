@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#DCE3E0" />
+    <meta name="description" content="Countersign demo: an AI agent's ask has to carry a real person's signature." />
+    <title>Countersign</title>
+    <link rel="stylesheet" href="./demo.css" />
+  </head>
+  <body>
+    <header class="bar">
+      <nav id="pips" class="pips" aria-label="Scenes"></nav>
+      <div class="bar__row">
+        <h1 id="title">Countersign</h1>
+        <button id="lang" type="button" class="link"></button>
+      </div>
+    </header>
+
+    <main id="stage" class="stage"></main>
+    <p id="status" class="status" role="status" aria-live="polite"></p>
+
+    <footer id="foot" class="foot"></footer>
+
+    <noscript>This demo needs JavaScript: the signatures are made and checked in your browser.</noscript>
+    <script type="module" src="./demo.js"></script>
+  </body>
+</html>

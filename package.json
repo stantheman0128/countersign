@@ -1,0 +1,15 @@
+{
+  "name": "countersign",
+  "version": "0.1.0",
+  "description": "Signed mandates for personal AI agents: an ask must carry a human's signature.",
+  "type": "module",
+  "private": true,
+  "license": "MIT",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "start": "node scripts/serve.mjs",
+    "test": "node --test test/*.test.mjs"
+  }
+}
